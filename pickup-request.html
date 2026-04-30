@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Pickup | EcoSmart AI</title>
+        <link rel="icon" type="image/png" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+<link rel="apple-touch-icon" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --emerald: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .pickup-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-header {
+            background: var(--primary-dark);
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .form-body { padding: 40px; }
+
+       
+        .form-label {
+            color: var(--primary-dark) !important;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--emerald);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        
+        .category-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .category-item:hover { border-color: var(--emerald); }
+
+        .category-item.active {
+            border-color: var(--emerald);
+            background: rgba(16, 185, 129, 0.05);
+            color: var(--emerald);
+        }
+
+        .category-item i { font-size: 1.5rem; margin-bottom: 8px; }
+
+        .btn-schedule {
+            background: var(--emerald);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            border: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-schedule:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="pickup-card">
+                <div class="form-header">
+                    <h2 class="fw-bold mb-1">Schedule a <span style="color: var(--emerald);">Pickup</span></h2>
+                    <p class="opacity-75 mb-0">Book a slot and our team will collect scrap from your doorstep.</p>
+                </div>
+
+                <div class="form-body">
+                    <form>
+                        <div class="mb-4">
+                            <label class="form-label">1. Select Waste Category</label>
+                            <div class="row g-3">
+                                <div class="col-md-3 col-6">
+                                    <div class="category-item active">
+                                         <i class="fas fa-box"></i>
+                                        <div class="small fw-bold">Plastic</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="category-item">
+                                        <i class="fas fa-plug"></i>
+                                        <div class="small fw-bold">E-Waste</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="category-item">
+                                        <i class="fas fa-box"></i>
+                                        <div class="small fw-bold">Paper</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="category-item">
+                                        <i class="fas fa-hammer"></i>
+                                        <div class="small fw-bold">Metal</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Estimated Weight (kg)</label>
+                                <input type="number" class="form-control" placeholder="e.g. 15">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Pickup Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-2 border-end-0"><i class="fas fa-map-marker-alt text-danger"></i></span>
+                                <textarea class="form-control border-start-0" rows="2" placeholder="Street, Sector, City..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-12">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+92 300 1234567">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-schedule">Confirm Pickup Request</button>
+                        
+                        <p class="text-center text-muted mt-3 small">
+                            <i class="fas fa-shield-alt me-1"></i> Verified Eco-Partners only
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
