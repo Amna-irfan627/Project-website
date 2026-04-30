@@ -11,6 +11,7 @@ using an AI-based identifier, submit scrap pickup request, view nearby disposal 
 and interact with the system through a Chatbot for queries and assistance. These
 features enable users to manage waste related activities in a simple and user-friendly
 way.
+
 The Scrap dealer’s module is designed to support service providers in managing pickup operations effectively. Scrap dealers can register on the system, manage services by
 adding pick-up requests, accept and reject user requests, handle user management and
 process scrap value payments .This module helps scrap dealers organize their operations
