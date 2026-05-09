@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+<link rel="apple-touch-icon" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+   
+    <link rel="icon" type="image/png" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+<link rel="apple-touch-icon" href="https://media.istockphoto.com/id/1384532150/vector/recycle-symbol-inside-circle-with-leaves-zero-waste-concept.jpg?s=612x612&w=0&k=20&c=lQPT8cj_dpkQBxa1G4Y6RzDz5vLog6OmWERx-vGpF_Y=">
+   
+<title>Service Dashboard | EcoSmart </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --sidebar-bg: #0f172a;
+        --accent: #10b981;
+        --bg-body: #f1f5f9;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-body);
+        overflow-x: hidden;
+      }
+
+      .sidebar {
+        width: 260px;
+        height: 100vh;
+        background: var(--sidebar-bg);
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 20px;
+        color: white;
+        z-index: 1000;
+      }
+
+      .brand-logo {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--accent);
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-weight: 600;
+        padding: 12px 15px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--accent) !important;
+      }
+
+      .main-content {
+        margin-left: 260px;
+        padding: 30px;
+      }
+
+      .dash-nav {
+        background: white;
+        padding: 15px 30px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+      }
+
+      .tab-section {
+        display: none;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+      .tab-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .stat-card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        border: 1px solid #e2e8f0;
+      }
+      .data-card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .btn-accept {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 6px 15px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .btn-reject {
+        background: transparent;
+        color: #dc3545;
+        border: 2px solid #dc3545;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .btn-accept:hover {
+        background: #059669;
+      }
+
+      .badge-type {
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+
+      .data-table-card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        border: 1px solid #e2e8f0;
+      }
+
+      .table thead th {
+        color: #64748b; 
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #f1f5f9;
+      }
+
+      .table tbody td {
+        color: #1e293b; 
+        font-weight: 500;
+        vertical-align: middle;
+        padding: 15px 0;
+      }
+
+      .status-pill {
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .status-pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .status-completed {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .sidebar .nav-link {
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="brand-logo">
+        <i class="fas fa-dumpster me-2"></i> DEALER HUB
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link active" onclick="showTab('overview', this)"
+          ><i class="fas fa-th-large me-2"></i> Overview</a
+        >
+        <a class="nav-link" onclick="showTab('services', this)"
+          ><i class="fas fa-tasks me-2"></i> Service Management</a
+        >
+        <a class="nav-link" onclick="showTab('user', this)"
+          ><i class="fas fa-users me-2"></i> User Management</a
+        >
+        <a class="nav-link" onclick="showTab('requests', this)"
+          ><i class="fas fa-bell me-2"></i> Accept Reject Request</a
+        >
+        <a class="nav-link" onclick="showTab('payments', this)"
+          ><i class="fas fa-file-invoice-dollar me-2"></i> Scrap Value
+          Payments</a
+        >
+      </nav>
+      <div style="position: absolute; bottom: 30px; width: calc(100% - 40px)">
+        <a
+          class="nav-link text-danger"
+          onclick="window.location.href = 'index.html'"
+          ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+        >
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="dash-nav">
+        <h5 class="mb-0 fw-bold text-dark" id="current-tab-title">
+          Dashboard Overview
+        </h5>
+        <div class="d-flex align-items-center">
+          <!-- <img
+            src="https://i.pravatar.cc/150?u=dealer"
+            class="rounded-circle me-2"
+            width="35"
+          /> -->
+          <span class="fw-bold text-dark small">Scrap Dealer Panel</span>
+        </div>
+      </div>
+
+      <div id="overview" class="tab-section active">
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="text-primary mb-2">
+                <i class="fas fa-id-badge fa-2x"></i>
+              </div>
+              <h3 class="fw-bold">1,245</h3>
+              <p class="text-muted small mb-0">Verified IDs</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="text-success mb-2">
+                <i class="fas fa-user-check fa-2x"></i>
+              </div>
+              <h3 class="fw-bold">Active</h3>
+              <p class="text-muted small mb-0">System Status</p>
+            </div>
+          </div>
+        </div>
+        <div class="data-card">
+          <h6><strong>Authorized Dealer!</strong></h6>
+          <p class="text-muted">
+           The Scrap Dealer Dashboard provides a complete overview of scrap collection activities, customer requests, and payment records in one place. It helps scrap dealers manage services efficiently, track transactions, and monitor overall business performance.
+          </p>
+        </div>
+      </div>
+
+      <div id="services" class="tab-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="fw-bold text-dark mb-1">Service Management</h4>
+            <p class="text-muted small">
+              Manage scrap collection requests and material categories
+            </p>
+          </div>
+          <div class="d-flex gap-2">
+            <!-- <button class="btn btn-outline-primary btn-sm fw-bold px-3">
+              <i class="fas fa-list me-1"></i> Manage Categories
+            </button> -->
+            <!-- <button class="btn btn-success btn-sm fw-bold px-3">
+              <i class="fas fa-plus me-1"></i> Add Pickup Request
+            </button> -->
+            <a href="pickup-request.html" class="btn btn-success btn-sm fw-bold px-3"> + Add Pickup Request</a>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="icon-box bg-primary bg-opacity-10 text-primary">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h3 class="fw-bold text-dark">24</h3>
+              <p class="text-muted small mb-0">Total Pickups Today</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="icon-box bg-success bg-opacity-10 text-success">
+                <i class="fas fa-weight-hanging"></i>
+              </div>
+              <h3 class="fw-bold text-dark">480kg</h3>
+              <p class="text-muted small mb-0">Recycled Weight</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="icon-box bg-warning bg-opacity-10 text-warning">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3 class="fw-bold text-dark">03</h3>
+              <p class="text-muted small mb-0">Pending Requests</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stat-card">
+              <div class="icon-box bg-info bg-opacity-10 text-info">
+                <i class="fas fa-wallet"></i>
+              </div>
+              <h3 class="fw-bold text-dark">Rs. 45k</h3>
+              <p class="text-muted small mb-0">Cash Payment</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-table-card">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center gap-3">
+              <!-- <h6 class="fw-bold text-dark mb-0">Pickup Activity</h6>
+              <select class="form-select form-select-sm w-auto">
+                <option>All Status</option>
+                <option>Pending</option>
+                <option>Completed</option>
+              </select> -->
+            </div>
+            <!-- <button class="btn btn-sm btn-outline-secondary">
+              <i class="fas fa-download me-1"></i> Export CSV
+            </button> -->
+          </div>
+
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Material</th>
+                  <th>Weight</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="bg-light rounded-circle p-2 me-2 text-center"
+                        style="width: 35px; height: 35px; font-size: 0.8rem"
+                      >
+                        AK
+                      </div>
+                      <span>Amna Khan</span>
+                    </div>
+                  </td>
+                  <td><span class="badge-type">Plastic (PET)</span></td>
+                  <td><strong>12 kg</strong></td>
+                  <td>Oct 24, 2026</td>
+                  <td>
+                    <span class="status-pill status-completed">Completed</span>
+                  </td>
+                  <td class="text-end">
+                    <button
+                      class="btn btn-sm btn-light text-primary me-1"
+                      title="Edit"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-light text-danger me-1"
+                      title="Delete"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-light text-muted"
+                      title="View Details"
+                    >
+                      <i class="fas fa-external-link-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="bg-light rounded-circle p-2 me-2 text-center"
+                        style="width: 35px; height: 35px; font-size: 0.8rem"
+                      >
+                        KF
+                      </div>
+                      <span>Fatima Usman</span>
+                    </div>
+                  </td>
+                  <td><span class="badge-type">Metal Scrap</span></td>
+                  <td><strong>45 kg</strong></td>
+                  <td>Oct 25, 2026</td>
+                  <td>
+                    <span class="status-pill status-pending">Pending</span>
+                  </td>
+                  <td class="text-end">
+                    <button
+                      class="btn btn-sm btn-light text-primary me-1"
+                      title="Edit"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-light text-danger me-1"
+                      title="Delete"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-sm btn-light text-muted"
+                      title="View Details"
+                    >
+                      <i class="fas fa-external-link-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+  <div id="user" class="tab-section active">
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="stat-card border-0 shadow-sm p-3 rounded-4 bg-white">
+                <div class="icon-box bg-primary bg-opacity-10 text-primary mb-2">
+                    <i class="fas fa-id-badge fa-lg"></i>
+                </div>
+                <h3 class="fw-bold text-dark mb-0">1,284</h3>
+                <p class="text-muted small mb-0">Total Verified IDs</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card border-0 shadow-sm p-3 rounded-4 bg-white">
+                <div class="icon-box bg-success bg-opacity-10 text-success mb-2">
+                    <i class="fas fa-user-check fa-lg"></i>
+                </div>
+                <h3 class="fw-bold text-dark">Active</h3>
+                <p class="text-muted small mb-0">System Status</p>
+            </div>
+        </div>
+        <!-- <div class="col-md-4 text-end">
+             <button class="btn btn-success rounded-pill px-4 py-3 fw-bold shadow-sm w-100" style="background: #10b981; border:none;">
+                <i class="fas fa-plus-circle me-2"></i>Register New User
+            </button>
+        </div> -->
+    </div>
+
+    <div class="data-table-card p-4 rounded-4 shadow-sm border-0 bg-white">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h5 class="fw-800 text-dark mb-1 text-uppercase" style="letter-spacing: 1px;">User Directory</h5>
+                <p class="text-muted small mb-0">Core system user management and identification.</p>
+            </div>
+            <!-- <div class="search-box">
+                <div class="input-group input-group-sm border rounded-pill overflow-hidden">
+                    <span class="input-group-text bg-white border-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" class="form-control border-0 shadow-none" placeholder="Find by ID or Name...">
+                </div>
+            </div> -->
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light border-0">
+                    <tr>
+                        <th class="ps-4 py-3" style="border-radius: 12px 0 0 12px;">User ID</th>
+                        <th class="py-3">User Name</th>
+                        <th class="text-center py-3" style="border-radius: 0 12px 12px 0;">Manage User</th>
+                    </tr>
+                </thead>
+                <tbody class="border-top-0">
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-bold">
+                                #USR-9920
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-sm bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 35px; height: 35px;">
+                                    AK
+                                </div>
+                                <span class="fw-bold text-dark">Amna Khan</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-4 dropdown-toggle shadow-none" type="button" data-bs-toggle="dropdown">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3">
+                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-user-edit me-2 text-primary"></i> Edit Profile</a></li>
+                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-history me-2 text-info"></i> View Pickups</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item py-2 text-danger" href="#"><i class="fas fa-user-slash me-2"></i> Suspend User</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="ps-4">
+                            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-bold">
+                                #USR-8812
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="avatar-sm bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 35px; height: 35px;">
+                                    KF
+                                </div>
+                                <span class="fw-bold text-dark">Fatima Usman</span>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-4 dropdown-toggle shadow-none" type="button" data-bs-toggle="dropdown">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu shadow border-0 rounded-3">
+                                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-user-edit me-2"></i> Edit</a></li>
+                                    <li><a class="dropdown-item py-2 text-danger" href="#"><i class="fas fa-trash-alt me-2"></i> Remove</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+      <div id="requests" class="tab-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h4 class="fw-bold text-dark mb-1">Incoming Requests</h4>
+            <p class="text-muted small">
+              New pickup requests from customers waiting for your approval
+            </p>
+          </div>
+          <!-- <span class="badge bg-danger rounded-pill px-3 py-2"
+            >3 New Requests</span
+          > -->
+        </div>
+
+        <div class="data-table-card">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Material Info</th>
+                  <th>Estimated Weight</th>
+                  <th>Location</th>
+                  <th>Time Slot</th>
+                  <th class="text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="fw-bold text-dark">Fatima Usman</div>
+                    <div class="text-muted small">ID: #REQ-1022</div>
+                  </td>
+                  <td><span class="badge-type">Iron / Steel</span></td>
+                  <td><strong>~20 kg</strong></td>
+                  <td>
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i> Mushtaq Colony, KSR
+                  </td>
+                  <td>Today, 4:00 PM</td>
+                  <td class="text-end">
+                    <button
+                      class="btn-reject me-2"
+                      onclick="confirmAction('Reject')"
+                    >
+                      Reject
+                    </button>
+                    <button
+                      class="btn-accept"
+                      onclick="confirmAction('Accept')"
+                    >
+                      Accept
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="fw-bold text-dark">Amna Irfan</div>
+                    <div class="text-muted small">ID: #REQ-1025</div>
+                  </td>
+                  <td><span class="badge-type">Mixed Paper</span></td>
+                  <td><strong>~15 kg</strong></td>
+                  <td>
+                    <i class="fas fa-map-marker-alt text-danger me-1"></i>
+                    Yousaf Colony, KSR
+                  </td>
+                  <td>Tomorrow, 11:00 AM</td>
+                  <td class="text-end">
+                    <button class="btn-reject me-2">Reject</button>
+                    <button class="btn-accept">Accept</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+<div id="payments" class="tab-section ">
+    <div class="row g-4 mb-4">
+        <div class="col-md-8">
+            <h4 class="fw-bold text-dark mb-1">Payments & Valuations</h4>
+            <p class="text-muted small">Calculate scrap value and process instant payouts to customers.</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="p-3 bg-white rounded-4 shadow-sm border-start border-4 border-success">
+                <span class="text-muted small fw-bold">TOTAL DISBURSED</span>
+                <h3 class="fw-bold text-success mb-0">Rs. 184,200</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="data-table-card p-4 rounded-4 shadow-sm border-0 bg-white">
+                <h6 class="fw-800 text-dark mb-4 text-uppercase" style="letter-spacing: 1px;">
+                    <i class="fas fa-calculator me-2 text-success"></i>Value Calculator
+                </h6>
+                
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Scrap Type</label>
+                        <select class="form-select bg-light border-0 shadow-none py-2">
+                            <option selected>Select Material Type</option>
+                            <option>Plastic (PET Grade A)</option>
+                            <option>Plastic (Mixed)</option>
+                            <option>Metal (Copper Wire)</option>
+                            <option>Metal (Aluminium)</option>
+                            <option>Paper (Cardboard)</option>
+                        </select>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Price Rate (per kg)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">Rs.</span>
+                                <input type="number" class="form-control bg-light border-0 shadow-none" placeholder="40">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold">Weight (kg)</label>
+                            <input type="number" class="form-control bg-light border-0 shadow-none" placeholder="15">
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-4 mb-4 text-center" style="background: #f0fdf4; border: 1px dashed #10b981;">
+                        <span class="text-muted small d-block">Calculated Value</span>
+                        <h2 class="fw-bold text-success mb-0">Rs. 600</h2>
+                    </div>
+
+                    <!-- <button type="button" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow-lg border-0" style="background: #10b981;">
+                        <i class="fas fa-check-circle me-2"></i>PROCESS PAYMENT
+                    </button> -->
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="data-table-card p-0 rounded-4 shadow-sm border-0 bg-white overflow-hidden">
+                <div class="p-4 border-bottom d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold text-dark mb-0">Recent Payout Ledger</h6>
+                    <!-- <button class="btn btn-sm btn-outline-success rounded-pill px-3">View All</button> -->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4">Transaction</th>
+                                <th>Scrap Type</th>
+                                <th>Rate/Value</th>
+                                <th class="pe-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="fw-bold">#TRX-9901</div>
+                                    <div class="text-muted small">Amna Khan</div>
+                                </td>
+                                <td><span class="badge bg-light text-success">PET Plastic</span></td>
+                                <td>
+                                    <div class="small">15kg @ 40</div>
+                                    <div class="fw-bold">Rs. 600</div>
+                                </td>
+                                <td class="pe-4">
+                                    <span class="badge rounded-pill bg-success-subtle text-success border border-success">Success</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <script>
+      function showTab(tabId, element) {
+        // Update Active Link
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((link) => link.classList.remove("active"));
+        element.classList.add("active");
+
+        // Show Section
+        document
+          .querySelectorAll(".tab-section")
+          .forEach((section) => section.classList.remove("active"));
+        document.getElementById(tabId).classList.add("active");
+
+        // Update Title
+        const titleMap = {
+          overview: "Dashboard Overview",
+          services: "Service Management",
+          user: "User Management",
+          requests: "Accept Reject Requests",
+          payments: "Scrap Value Payment ",
+        };
+        document.getElementById("current-tab-title").innerText =
+          titleMap[tabId];
+      }
+    </script>
+  </body>
+</html>
